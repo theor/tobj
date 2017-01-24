@@ -422,8 +422,8 @@ fn add_vertex(mesh: &mut Mesh, index_map: &mut HashMap<VertexIndices, u32>, vert
                 mesh.texcoords.push(texcoord[vt * 2]);
                 mesh.texcoords.push(texcoord[vt * 2 + 1]);
             }
-            if !normal.is_empty() && vert.vn > -1 {
-                let vn = vert.vn as usize;
+            if !normal.is_empty() {
+                let vn = if vert.vn > -1 { vert.vn as usize } else { v };
                 mesh.normals.push(normal[vn * 3]);
                 mesh.normals.push(normal[vn * 3 + 1]);
                 mesh.normals.push(normal[vn * 3 + 2]);
